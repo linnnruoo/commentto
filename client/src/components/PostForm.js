@@ -12,7 +12,7 @@ const PostForm = ({
   _onSubmitNewPost
 }) => {
   return (
-    <GridContainer>
+    <GridContainer spacing={16}>
       <GridItem xs={12}>
         <TextField
           label="Name"
