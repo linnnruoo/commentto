@@ -10,7 +10,8 @@ class Post extends Component {
     this.state = {
       isReplyBoxOpen: false
     };
-    this._onClick = this._onClick.bind(this);
+    this._onOpen = this._onOpen.bind(this);
+    this._onCancel = this._onCancel.bind(this);
   }
 
   _onOpen = () => {
