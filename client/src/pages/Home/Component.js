@@ -56,7 +56,7 @@ const HomeComponent = ({
   };
 
   return (
-    <GridContainer>
+    <GridContainer className="container">
       <GridItem>
         <Avatar alt="ME!" src={profile} style={{ width: 300, height: 300 }} />
       </GridItem>
