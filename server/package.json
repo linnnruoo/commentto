@@ -4,6 +4,10 @@
   "main": "server.js",
   "author": "Lynn",
   "license": "MIT",
+  "scripts": {
+    "start": "node ./bin/www",
+    "debug": "nodemon --inspect ./bin/www"
+  },
   "devDependencies": {
     "nodemon": "^1.18.11"
   },

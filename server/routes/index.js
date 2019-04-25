@@ -7,5 +7,7 @@ const router = express.Router();
  * @access Public
  */
 router.get("/", (req, res, next) => {
-  res.render("index", { title: "Success!" });
+  console.log("Welcome!");
 });
+
+module.exports = router;

@@ -17,8 +17,8 @@ app.use(express.static(path.join(__dirname, "public")));
 // Http requests to /
 app.use("/", indexRouter);
 
-// Http requests to /api\
-app.use("/api", apiRouter);
+// Http requests to /api
+// app.use("/api", apiRouter);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("../client/build"));
