@@ -11,7 +11,7 @@ const Reply = {
 
   createOne: async (pid, name, comment) => {
     const insertQuery = `
-        INSERT INTO replies
+        INSERT INTO replies(pid, name, comment)
         VALUES($1, $2, $3)
         returning *
     `;

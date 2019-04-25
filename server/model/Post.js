@@ -8,7 +8,7 @@ const Post = {
   },
 
   createOne: async (name, region, comment) => {
-    const insertQuery = `INSERT INTO posts
+    const insertQuery = `INSERT INTO posts(name, region, comment)
         VALUES($1, $2, $3)
         returning *`;
 

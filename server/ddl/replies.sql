@@ -7,6 +7,6 @@ create table replies
   name		    varchar(100)	not null,
   comment     varchar(500)  not null,
   date	      timestamp default CURRENT_TIMESTAMP		not null,
-  primary key (id, pid),
+  primary key (id),
   foreign key (pid) references posts(id)
 );
