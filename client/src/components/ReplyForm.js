@@ -4,12 +4,12 @@ import GridContainer from "./GridContainer";
 import GridItem from "./GridItem";
 import Button from "./Button";
 
-const PostForm = ({
+const ReplyForm = ({
+  postId,
   name,
-  region,
-  postComment,
+  replyComment,
   _onTextChange,
-  _onSubmitNewPost
+  _onSubmitNewReply
 }) => {
   return (
     <GridContainer>
@@ -24,28 +24,21 @@ const PostForm = ({
       <GridItem xs={12}>
         <TextField
           label="Comment"
-          value={postComment}
+          value={replyComment}
           name="postComment"
           multiline
           rows="5"
           onChange={_onTextChange}
         />
       </GridItem>
-      <GridItem xs={12} sm={8}>
-        <TextField
-          label="Region"
-          value={region}
-          name="region"
-          multiline
-          rowsMax="5"
-          onChange={_onTextChange}
+      <GridItem xs={12} sm={6} align="right">
+        <Button
+          onClick={_onSubmitNewReply(postId)}
+          title="Reply to this comment!"
         />
-      </GridItem>
-      <GridItem xs={12} sm={4} align="right">
-        <Button onClick={_onSubmitNewPost} title="Post your thought!" />
       </GridItem>
     </GridContainer>
   );
 };
 
-export default PostForm;
+export default ReplyForm;
