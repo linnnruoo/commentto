@@ -1,5 +1,8 @@
 import React from "react";
 import HomeComponent from "./Component";
+import { connect } from "react-redux";
+import { getAllPosts, createNewPost } from "../../actions/postAction";
+import { getAllReplies, addNewReply } from "../../actions/replyAction";
 
 // TODO: check validation of the data
 class HomeContainer extends React.Component {
@@ -17,7 +20,8 @@ class HomeContainer extends React.Component {
   }
 
   componentDidMount = () => {
-    // fetch all the posts
+    this.props.getAllPosts();
+    this.props.getAllReplies();
   };
 
   _onTextChange = e => {
@@ -31,6 +35,7 @@ class HomeContainer extends React.Component {
       region: this.state.region,
       postComment: this.state.postComment
     };
+    this.props.createNewPost(postInfo);
   };
 
   _onSubmitNewReply = postId => () => {
@@ -48,9 +53,24 @@ class HomeContainer extends React.Component {
         _onTextChange={this._onTextChange}
         _onSubmitNewPost={this._onSubmitNewPost}
         _onSubmitNewReply={this._onSubmitNewReply}
+        posts={this.props.posts}
       />
     );
   }
 }
 
-export default HomeContainer;
+const mapStateToProps = (state, props) => ({
+  posts: state.posts,
+  replies: state.replies
+  // TODO: batch replies by postId
+});
+
+export default connect(
+  mapStateToProps,
+  {
+    getAllPosts,
+    createNewPost,
+    getAllReplies,
+    addNewReply
+  }
+)(HomeContainer);
