@@ -1,6 +1,6 @@
-drop table if exists comments cascade;
+drop table if exists replies cascade;
 
-create table comments
+create table replies
 (
   id          serial        not null,
   pid         int           not null,
