@@ -3,6 +3,7 @@ import HomeComponent from "./Component";
 import { connect } from "react-redux";
 import { getAllPosts, createNewPost } from "../../actions/postAction";
 import { getAllReplies, addNewReply } from "../../actions/replyAction";
+import { batchRepliesByPost } from "../../utilities/selectors";
 
 // TODO: check validation of the data
 class HomeContainer extends React.Component {
@@ -33,13 +34,25 @@ class HomeContainer extends React.Component {
     const postInfo = {
       name: this.state.name,
       region: this.state.region,
-      postComment: this.state.postComment
+      comment: this.state.postComment
     };
     this.props.createNewPost(postInfo);
+    this.setState({
+      postComment: ""
+    });
   };
 
   _onSubmitNewReply = postId => () => {
     // submit new reply
+    const replyInfo = {
+      pid: postId,
+      name: this.state.name,
+      comment: this.state.replyComment
+    };
+    this.props.addNewReply(replyInfo);
+    this.setState({
+      replyComment: ""
+    });
   };
 
   render() {
@@ -54,15 +67,15 @@ class HomeContainer extends React.Component {
         _onSubmitNewPost={this._onSubmitNewPost}
         _onSubmitNewReply={this._onSubmitNewReply}
         posts={this.props.posts}
+        groupedReplies={this.props.groupedReplies}
       />
     );
   }
 }
 
-const mapStateToProps = (state, props) => ({
+const mapStateToProps = state => ({
   posts: state.posts,
-  replies: state.replies
-  // TODO: batch replies by postId
+  groupedReplies: batchRepliesByPost(state)
 });
 
 export default connect(
