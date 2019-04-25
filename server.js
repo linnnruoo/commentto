@@ -3,7 +3,6 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 
-const indexRouter = require("./routes");
 const apiRouter = require("./routes/api");
 
 const app = express();
@@ -12,10 +11,7 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
-
-// Http requests to /
-app.use("/", indexRouter);
+// app.use(express.static(path.join(__dirname, "public")));
 
 // Http requests to /api
 app.use("/api", apiRouter);
