@@ -6,6 +6,6 @@ create table posts
   name				varchar(100)	not null,
   region      varchar(250)  not null,
   comment     varchar(500)  not null,
-  date			  timestamp		  not null,
+  date			  timestamp default CURRENT_TIMESTAMP		  not null,
   primary key (id)
 );
