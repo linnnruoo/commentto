@@ -2,15 +2,9 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import { withStyles } from "@material-ui/core";
 
-const DefaultButton = ({ classes, title, href }) => {
+const DefaultButton = ({ classes, title, ...rest }) => {
   return (
-    <Button
-      href={href}
-      className={classes.button}
-      type="file"
-      align="center"
-      target="_blank"
-    >
+    <Button className={classes.button} align="center" {...rest}>
       {title}
     </Button>
   );
