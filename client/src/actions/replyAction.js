@@ -5,7 +5,6 @@ import {
   GET_ERRORS
 } from "./types";
 import axios from "axios";
-import { toast } from "react-toastify";
 
 export const setReplyLoading = () => {
   return {
@@ -22,7 +21,6 @@ export const addNewReply = replyInfo => dispatch => {
         type: CREATE_REPLY,
         payload: res.data
       });
-      if (res.status === 200) toast("New Reply Added!");
     })
     .catch(err =>
       dispatch({
