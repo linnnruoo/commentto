@@ -58,7 +58,7 @@ class Post extends Component {
     if (replies === undefined || _.isEmpty(replies))
       return (
         <Typography gutterBottom variant="caption">
-          There is no reply to this post currently
+          <i>There is no reply to this post currently</i>
         </Typography>
       );
 
@@ -111,10 +111,9 @@ class Post extends Component {
           color="primary"
           className={classes.replyHeader}
         >
-          replies:
+          Replies:
         </Typography>
         {this.renderReplies()}
-        <Divider />
         {this.renderAddReply()}
       </Paper>
     );
@@ -138,7 +137,8 @@ const styles = {
   },
   replyHeader: {
     fontSize: 15,
-    fontWeight: "bold"
+    fontWeight: "bold",
+    color: "#f29559"
   },
   addReplyText: {
     color: "#f29559",
