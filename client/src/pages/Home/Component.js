@@ -1,7 +1,7 @@
 import React from "react";
 
 import skills from "../../constants/skills";
-import { Typography, Grid, Avatar, CircularProgress } from "@material-ui/core";
+import { Typography, Avatar, CircularProgress } from "@material-ui/core";
 import GridContainer from "../../components/GridContainer";
 import GridItem from "../../components/GridItem";
 import Post from "../../components/Post";
