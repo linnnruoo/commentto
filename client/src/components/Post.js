@@ -64,7 +64,7 @@ class Post extends Component {
 
     return replies.map((reply, index) => {
       return (
-        <Typography gutterBottom variant="caption">
+        <Typography key={index} gutterBottom variant="caption">
           <strong>{reply.name}</strong>: {reply.comment}
         </Typography>
       );
