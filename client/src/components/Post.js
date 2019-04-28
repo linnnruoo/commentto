@@ -48,7 +48,7 @@ class Post extends Component {
     };
     this.props._onSubmitNewReply(replyInfo);
     this.setState({
-      comment: "",
+      replyComment: "",
       isReplyBoxOpen: false
     });
   };
