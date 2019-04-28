@@ -12,8 +12,7 @@ class HomeContainer extends React.Component {
     this.state = {
       name: "",
       region: "",
-      postComment: "",
-      replyComment: ""
+      postComment: ""
     };
     this._onTextChange = this._onTextChange.bind(this);
     this._onSubmitNewPost = this._onSubmitNewPost.bind(this);
@@ -42,31 +41,24 @@ class HomeContainer extends React.Component {
     });
   };
 
-  _onSubmitNewReply = postId => () => {
+  _onSubmitNewReply = replyInfo => {
     // submit new reply
-    const replyInfo = {
-      pid: postId,
-      name: this.state.name,
-      comment: this.state.replyComment
-    };
+    // where reply information is obtained from individual post section
     this.props.addNewReply(replyInfo);
-    this.setState({
-      replyComment: ""
-    });
   };
 
   render() {
-    const { name, region, postComment, replyComment } = this.state;
+    const { name, region, postComment } = this.state;
     return (
       <HomeComponent
         name={name}
         region={region}
         postComment={postComment}
-        replyComment={replyComment}
         _onTextChange={this._onTextChange}
         _onSubmitNewPost={this._onSubmitNewPost}
         _onSubmitNewReply={this._onSubmitNewReply}
         posts={this.props.posts}
+        replies={this.props.replies}
         groupedReplies={this.props.groupedReplies}
       />
     );
@@ -75,6 +67,7 @@ class HomeContainer extends React.Component {
 
 const mapStateToProps = state => ({
   posts: state.posts,
+  replies: state.replies,
   groupedReplies: batchRepliesByPost(state)
 });
 

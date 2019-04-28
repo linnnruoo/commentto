@@ -5,7 +5,6 @@ import {
   GET_ERRORS
 } from "./types";
 import axios from "axios";
-import { toast } from "react-toastify";
 
 export const setPostLoading = () => {
   return {
@@ -22,7 +21,6 @@ export const createNewPost = postInfo => dispatch => {
         type: CREATE_POST,
         payload: res.data
       });
-      if (res.status === 200) toast("New Post Created!");
     })
     .catch(err =>
       dispatch({

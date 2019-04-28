@@ -3,13 +3,14 @@ import TextField from "./TextField";
 import GridContainer from "./GridContainer";
 import GridItem from "./GridItem";
 import Button from "./Button";
+import { Typography } from "@material-ui/core";
 
 const ReplyForm = ({
-  postId,
   name,
   replyComment,
-  _onTextChange,
-  _onSubmitNewReply
+  _onReplyTextChange,
+  _onSubmitReplyClick,
+  _onCancel
 }) => {
   return (
     <GridContainer>
@@ -18,24 +19,22 @@ const ReplyForm = ({
           label="Name"
           value={name}
           name="name"
-          onChange={_onTextChange}
+          onChange={_onReplyTextChange}
+          variant="standard"
         />
       </GridItem>
       <GridItem xs={12}>
         <TextField
           label="Comment"
           value={replyComment}
-          name="postComment"
-          multiline
-          rows="5"
-          onChange={_onTextChange}
+          name="replyComment"
+          onChange={_onReplyTextChange}
+          variant="standard"
         />
       </GridItem>
       <GridItem xs={12} sm={6} align="right">
-        <Button
-          onClick={_onSubmitNewReply(postId)}
-          title="Reply to this comment!"
-        />
+        <Button onClick={_onSubmitReplyClick} title="Reply" />
+        <Typography onClick={_onCancel}>Cancel</Typography>
       </GridItem>
     </GridContainer>
   );

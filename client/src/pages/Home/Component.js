@@ -14,33 +14,39 @@ const HomeComponent = ({
   name,
   region,
   postComment,
-  replyComment,
   _onTextChange,
   _onSubmitNewPost,
   _onSubmitNewReply,
-  posts
+  posts,
+  replies,
+  groupedReplies
 }) => {
   const renderSkills = () => {
     return Object.keys(skills).map((category, index) => {
       return (
-        <Grid key={index} align="center" spacing={40}>
+        <GridItem key={index} align="center">
           <Typography variant="h6" style={{ fontWeight: "bold" }}>
             {category}
           </Typography>
           {skills[category].map((skill, index) => {
             return <Typography key={index}>{skill}</Typography>;
           })}
-        </Grid>
+        </GridItem>
       );
     });
   };
 
   const renderPosts = () => {
-    if (posts.loading) return <CircularProgress size={50} thickness={5} />;
+    if (posts.loading || replies.loading)
+      return <CircularProgress size={50} thickness={5} />;
     else
       return posts.allPosts.map((post, index) => (
-        <GridItem xs={12}>
-          <Post key={index} post={post} />
+        <GridItem xs={12} key={post.id}>
+          <Post
+            post={post}
+            replies={groupedReplies[post.id]}
+            _onSubmitNewReply={_onSubmitNewReply}
+          />
         </GridItem>
       ));
   };
@@ -70,7 +76,9 @@ const HomeComponent = ({
             Hi, I'm Lynn :D
           </Typography>
         </GridItem>
-        <GridItem>{renderSkills()}</GridItem>
+        <GridItem container spacing={16}>
+          {renderSkills()}
+        </GridItem>
         <GridItem>
           <Typography gutterBottom variant="h5" color="primary">
             Comments
